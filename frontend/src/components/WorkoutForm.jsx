@@ -7,9 +7,9 @@ const WorkoutForm = () => {
     const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
-      e.preventDefualt();
+      e.preventDefault();
 
-      const workout = {title, load, reps}; // create a workout object with title, load and reps
+      const workout = {title, reps, load}; // create a workout object with title, load and reps
 
       const response = await fetch('http://localhost:3000/api/workouts', {
         method: 'POST',

@@ -4,9 +4,34 @@ const workoutForm = () => {
     const [title, setTitle] = useState('');
     const [load, setLoad] = useState('');
     const [reps, setReps] = useState('');
+    const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
-      
+      e.preventDefualt();
+
+      const workout = {title, load, reps}; // create a workout object with title, load and reps
+
+      const response = await fetch('http://localhost:3000/api/workouts', {
+        method: 'POST',
+        body: JSON.stringify(workout), // workout body convert in to json format
+        headers: {
+          'Content-Type': 'application/json' // set the content type to application json
+        }
+      });
+
+      const json = await response.json(); // await the response and convert it to json format
+
+      if(!response.ok){
+        setError(json.error); // if response is not ok set the error message from the json response
+      }
+
+      if(response.ok){
+        setTitle('');
+        setLoad('');
+        setReps('');
+        setError(null);
+        console.log("New workout successfully added...!", json)
+      }
     }
 
   return (

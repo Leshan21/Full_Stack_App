@@ -1,4 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Home from './pages/Home.jsx'
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
             <Routes>
               <Route 
                 path='/'
-                element = {<></>}
+                element = {<Home />}
 
               ></Route>
             </Routes>

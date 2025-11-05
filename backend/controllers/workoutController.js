@@ -2,7 +2,16 @@ const Workout = require('../models/workoutModel');
 
 
 // Get all workouts
-
+const getAllWorkouts = async (req, res) => {
+    try {
+        const workouts = await Workout.find({});
+        res.status(200).json(workouts);
+    }
+  
+    catch(err){
+        res.status(400).json({error: err.message});
+    }
+}
 
 // get single workout
 
@@ -26,4 +35,5 @@ const createWorkout = async (req, res) => {
 
 module.exports = {
     createWorkout,
+    getAllWorkouts
 }

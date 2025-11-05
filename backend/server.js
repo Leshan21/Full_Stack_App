@@ -4,8 +4,10 @@ const dotenv = require('dotenv');
 const workoutRoutes = require('./route/workouts');
 
 dotenv.config();
-
 const app = express();
+
+// middleware
+app.use(express.json());
 
 // route
 app.use('/api/workouts', workoutRoutes);

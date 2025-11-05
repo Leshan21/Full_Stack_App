@@ -1,9 +1,24 @@
-import React from 'react'
+import { useEffect, useState } from "react"
 
 const Home = () => {
+    const [workouts, serWorkouts] = useState(null);
+
+    useEffect( () => {
+     fetch('http://localhost:3000/api/workouts')
+        .then((res) => res.json())
+        .then((data) => serWorkouts(data))
+        .catch((err) => console.error("Error fetching:", err));
+    }, [])
+
   return (
-    <div>
-      Home page
+    <div className="home">
+      <div className="workouts">
+        <ul>
+            {workouts && workouts.map((workout) => (
+                <li key={workout._id}>{workout.title}</li>
+            ))}
+        </ul>
+      </div>
     </div>
   )
 }

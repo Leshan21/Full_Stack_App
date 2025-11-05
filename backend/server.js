@@ -1,14 +1,14 @@
 const express = require('express');
 const dotenv = require('dotenv');
 
+const workoutRoutes = require('./route/workouts');
+
 dotenv.config();
 
 const app = express();
 
 // route
-app.get('/', (req, res) => {
-  res.send('API is running.....');
-})
+app.use('/api/workouts', workoutRoutes);
 
 
 app.listen(process.env.PORT, () => {

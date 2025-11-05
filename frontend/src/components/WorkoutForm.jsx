@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const workoutForm = () => {
+const WorkoutForm = () => {
     const [title, setTitle] = useState('');
     const [load, setLoad] = useState('');
     const [reps, setReps] = useState('');
@@ -51,4 +51,4 @@ const workoutForm = () => {
   )
 }
 
-export default workoutForm
+export default WorkoutForm
